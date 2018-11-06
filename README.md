@@ -16,7 +16,7 @@ Hard thresholds are typically used to describe conditions where further re-clust
 I recommend there always be a hard threshold for the number of points in a cluster. This way, the algorithm is guaranteed to terminate since on each recursive step, the clusters evaluated will continue to decrease in size. The provided algorithm requires it to avoid such unattainable thresholds conditions.
 
 # Example Set, Census Data
-I have provided the census dataset from the paper to play with this algorithm. I defined a single hard threshold for the number of points. For the soft thresholds, I used average Euclidean distance between each point and the total population of all points in the cluster. This resulted in sparse clusters for rural areas where drive times are less impactful and dense clusters in very urban areas where drive times are more significant. Tweaking the values for the population and distance value thresholds will achieve varied results.
+I have provided the census dataset from the paper to play with this algorithm. I defined a single hard threshold for the number of points. For the soft thresholds, I used average Haversine distance between each point and the total population of all points in the cluster. This resulted in sparse clusters for rural areas where drive times are less impactful and dense clusters in very urban areas where drive times are more significant. Tweaking the values for the population and distance value thresholds will achieve varied results.
 
 [README IN PROGRESS]
 
