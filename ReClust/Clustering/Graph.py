@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-plt.switch_backend("Qt4Agg")
+#plt.switch_backend("Qt4Agg")
 
 import numpy as np
 import os

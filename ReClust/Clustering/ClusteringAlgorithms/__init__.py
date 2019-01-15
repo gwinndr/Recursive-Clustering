@@ -3,3 +3,4 @@ import MeanShift
 import AdaptiveKmeans
 import AdaptiveKmeansStateDefined
 import AdaptiveKmeansStateDefinedSilLimit
+import SolutionTemplate

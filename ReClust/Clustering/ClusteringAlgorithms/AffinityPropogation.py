@@ -6,19 +6,20 @@ import os
 # Affinity Propogation info class
 class AffinityPropogationReclust_c:
     def __init__(self):
-        self.mAlgorithmName     = "Affinity Propogation"
-        self.mSaveLocation      = "./Outputs/Affinity_Propogation"
+        self.mAlgorithmName     = "Affinity Propogation" # REQUIRED
+        self.mSaveLocation      = "./Outputs/Affinity_Propogation" # REQUIRED
 
         self.mDistanceFormula       = self.HaversineDistance
-        self.mMinPointsInCluster    = 10
-        self.mMaxDistance           = 5
-        self.mMaxPopulation         = 20000
+        self.mMinPointsInCluster    = 10 # REQUIRED
+        self.mMaxDistance           = 5 # Defines the distance threshold
+        self.mMaxPopulation         = 20000 # Defines the population threshold
 
-        self.mHardThresholds        = []
-        self.mSoftThresholds        = [self.DistanceThreshold, self.PopulationThreshold]
+        self.mHardThresholds        = [] # REQUIRED
+        self.mSoftThresholds        = [self.DistanceThreshold, self.PopulationThreshold] # REQUIRED (can be empty)
 
-        self.mClusters = None
+        self.mClusters = None # REQUIRED
 
+        # ALL REQUIRED
         # Statistics information
         self.mDistances         = None
         self.mTotalPoints       = None
@@ -30,7 +31,8 @@ class AffinityPropogationReclust_c:
         self.mTotalPop          = None
 
 
-    # Affinity Propogation parameters here for Reclust (REQUIRED)
+    # REQUIRED
+    # Affinity Propogation parameters here for Reclust
     def ReclusterFunction(self, cluster):
         # Using Euclidean distances for now
         coordinates = []
@@ -51,7 +53,8 @@ class AffinityPropogationReclust_c:
 
         return centroids, label_indices
 
-    # For getting statistics (REQUIRED)
+    # REQUIRED
+    # For getting statistics
     def CalculateStatistics(self):
         self.CalculateDistanceList()
 
@@ -79,7 +82,8 @@ class AffinityPropogationReclust_c:
 
             self.mTotalPop.append(total_pop)
 
-    # Prints the cluster information (REQUIRED)
+    # REQUIRED
+    # Prints the cluster information
     def PrintClusters(self):
         print "Number of clusters:", len(self.mClusters), "\n"
 
@@ -97,7 +101,6 @@ class AffinityPropogationReclust_c:
 
         print
 
-
     # Generates a save folder
     def GenerateSaveFolder(self):
         if (not os.path.isdir(self.mSaveLocation)):
@@ -105,6 +108,7 @@ class AffinityPropogationReclust_c:
 
     # Will be used as a soft distance threshold
     # Calcluates the mean distance to centroid using the haversine
+    # A value of true denotes the soft threshold passes (all soft thresholds must pass to stop recursion)
     def DistanceThreshold(self,cluster):
         centroid = cluster.Centroid
         sum = 0.0
@@ -116,6 +120,7 @@ class AffinityPropogationReclust_c:
         return (mean <= self.mMaxDistance)
 
     # Will use sum of populations as a soft threshold
+    # A value of true denotes the soft threshold passes (all soft thresholds must pass to stop recursion)
     def PopulationThreshold(self, cluster):
         sum = 0.0
 

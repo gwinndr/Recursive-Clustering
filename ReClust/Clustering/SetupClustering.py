@@ -19,6 +19,7 @@ def SetupClustering(censusPath, stateCodePath, useGraphics):
     print("3) Adaptive Kmeans")
     print("4) State Defined Adaptive Kmeans")
     print("5) 4 with Sil limiting")
+    print("6) Test Solution Template")
     print  # empty line
     while (True):
         answer = raw_input("Clustering algorithm (use number): ")
@@ -38,6 +39,9 @@ def SetupClustering(censusPath, stateCodePath, useGraphics):
         elif (answer == '5'):
             clustering_obj = AdaptiveKmeansStateDefinedSilLimit.AdaptiveKmeansStateDefinedSilLimitReclust_c()
             clustering_obj.RunConfigurations(state_codes)
+            break
+        elif (answer == '6'):
+            clustering_obj = SolutionTemplate.SolutionTemplate()
             break
         else:
             print("Input not recognized!")
