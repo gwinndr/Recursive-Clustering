@@ -1,6 +1,8 @@
 # Recursive-Clustering Demo
 Original paper found here: https://tars.clarkson.edu/papers/BlockGroup_GISTAM2018.pdf
 
+In the process of creating a cleaned up codebase for this and putting it up on PyPi.
+
 Note that this not a general-purpose library at the moment, I am still working on that. This is just a workable demo from the paper. This code is also not documented so please refer to this README for usage instructions.
 
 The *X11 forwarding message* was present for when this was run on a server without X11 forwarding set up. If you're running locally, just answer yes.
